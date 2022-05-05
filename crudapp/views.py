@@ -1,7 +1,8 @@
+from multiprocessing import context
 from django.shortcuts import render,redirect
 from django.views import View
-
-
+from .models import NameList, BlogPost
+from .forms import CreateNameListForm
 # Create your views here.
 
 
@@ -12,8 +13,22 @@ class AddHomeView(View):
     def get(self, request, *args, **kwargs):
         context = {}
 
+
         return render(request, self.template_name, context)
 
+    # Post request 
+    def post(self, request, *args, **kwargs):
+        context = {}
+
+        form = CreateNameListForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.save()
+            context['success'] = True
+        
+
+
+        return render(request, self.template_name, context)
 
 
 
@@ -22,7 +37,11 @@ class ListItems(View):
     template_name = 'list.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        context = {}
+
+        name_list = NameList.objects.all()
+        context['name_list'] = name_list
+        return render(request, self.template_name, context)
 
 
 # This view displays ever list and every status 
@@ -30,4 +49,9 @@ class BlogView(View):
     template_name = 'blog.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        
+        context = {}
+
+        blog_post = BlogPost.objects.last()
+        context['blog_post'] = blog_post
+        return render(request, self.template_name, context)

@@ -1,3 +1,18 @@
 from django.db import models
 
-# Create your models here.
+
+class NameList(models.Model):
+	name 			    = models.CharField(max_length=150, default="name")
+	verified 			    = models.BooleanField(default=False)
+	time         			= models.DateTimeField(auto_now=True, verbose_name="date updated")
+
+	def __str__(self):
+		return self.name
+
+
+class BlogPost(models.Model):
+	body 			        = models.CharField(max_length=1000, default="name")
+	time         			= models.DateTimeField(auto_now=True, verbose_name="date updated")
+
+	def __str__(self):
+		return self.body

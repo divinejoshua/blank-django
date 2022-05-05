@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["divine-django-dgon-p9i62.ondigitalocean.app"]
+ALLOWED_HOSTS = ["divine-django-dgon-p9i62.ondigitalocean.app", '127.0.0.1']
 
 
 # Application definition

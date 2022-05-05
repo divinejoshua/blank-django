@@ -20,12 +20,14 @@
 
     <div class="container mt-5">
         <h3>Add name!</h3>
-        <p class="text-success">Added successfully</p>
+        {% if success %}
+          <p class="text-success">Added successfully</p>
+        {% endif %}
 
-        <form method="POST" action="/">
+        <form method="POST" action="/">{% csrf_token %}
             <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="mt-3 form-control" placeholder="Enter username">
+            <input type="text" name="name" class="mt-3 form-control" placeholder="Enter username">
             </div>
 
             <button type="submit" class="mt-4 btn btn-primary">Submit</button>
