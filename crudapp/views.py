@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from .models import NameList, BlogPost
 from .forms import CreateNameListForm
+from .tasks import update_verify
 # Create your views here.
 
 
@@ -12,6 +13,7 @@ class AddHomeView(View):
     
     def get(self, request, *args, **kwargs):
         context = {}
+        update_verify(10)
 
 
         return render(request, self.template_name, context)
@@ -19,6 +21,7 @@ class AddHomeView(View):
     # Post request 
     def post(self, request, *args, **kwargs):
         context = {}
+
 
         form = CreateNameListForm(request.POST or None, request.FILES or None)
         if form.is_valid():
