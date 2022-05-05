@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,6 +37,10 @@
         <br>
         <a href="{% url 'crudapp:listItem' %}">View list</a> <br>
         <a href="{% url 'crudapp:blog' %}">View blog</a>
+
+        <br><br>
+        
+        <img src="{% static 'image.jpg' %}" height="300" alt="My image">
 
     </div>
 
