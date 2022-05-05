@@ -13,9 +13,7 @@ class AddHomeView(View):
     
     def get(self, request, *args, **kwargs):
         context = {}
-        update_verify(10)
-
-
+        
         return render(request, self.template_name, context)
 
     # Post request 
@@ -27,6 +25,12 @@ class AddHomeView(View):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
+
+            # Get instance ID 
+            instance = NameList.objects.last()
+            key = instance.pk
+            update_verify.delay(key)
+
             context['success'] = True
         
 
