@@ -100,8 +100,7 @@ DATABASES['default'].update(db_from_env)
 
 # The command for celery is 'celery -A djangoprod worker -l info --pool=solo'
 # Celery
-CELERY_BROKER_URL = "rediss://default:AVNS_zxs5QMz76JF0EfH@db-redis-lon1-24119-do-user-8141050-0.b.db.ondigitalocean.com:25061"
-# CELERY_RESULT_BACKEND = "rediss://default:AVNS_zxs5QMz76JF0EfH@db-redis-lon1-24119-do-user-8141050-0.b.db.ondigitalocean.com:25061"
+CELERY_BROKER_URL =  config('REDIS_URL')
 
 
 CELERY_RESULT_BACKEND = 'django-db'
