@@ -7,4 +7,5 @@ app_name = 'crudapp'
 urlpatterns = [
     path('', views.AddHomeView.as_view(), name='addItem'),
     path('list/', views.ListItems.as_view(), name='listItem'),
+    path('blog/', views.BlogView.as_view(), name='blog'),
 ]

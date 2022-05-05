@@ -29,3 +29,11 @@ class ListItems(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
+
+
+# This view displays ever list and every status 
+class BlogView(View):
+    template_name = 'blog.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
