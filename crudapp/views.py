@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
 
+
 # Create your views here.
 
 
@@ -11,15 +12,8 @@ class AddHomeView(View):
     def get(self, request, *args, **kwargs):
         context = {}
 
-
         return render(request, self.template_name, context)
 
-    # Post request 
-    def get(self, request, *args, **kwargs):
-        context = {}
-
-
-        return render(request, self.template_name, context)
 
 
 
