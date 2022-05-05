@@ -99,7 +99,7 @@ DATABASES['default'].update(db_from_env)
 
 
 # Celery
-CELERY_BROKER_URL = config('REDIS_URL')
+CELERY_BROKER_URL = config('REDIS_URI')
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
