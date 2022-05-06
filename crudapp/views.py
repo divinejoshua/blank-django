@@ -79,3 +79,29 @@ class BlogView(View):
             context['blog_post'] = blog_post
             
         return render(request, self.template_name, context)
+
+
+
+
+# This view displays ever list and every status 
+class BlogView(View):
+    template_name = 'blog.html'
+
+    def get(self, request, *args, **kwargs):
+        
+        context = {}
+
+
+        # check if cache exist
+        if cache.get('cached_blog_post'):
+                context['blog_post'] = cache.get('cached_blog_post')
+        else:
+            # Get the value from the database 
+            blog_post = BlogPost.objects.last()
+            
+             # Setting the cache 
+            # cache.set(key, value, timeout=DEFAULT_TIMEOUT in seconds)
+            cache.set('cached_blog_post', blog_post, 20)
+            context['blog_post'] = blog_post
+            
+        return render(request, self.template_name, context)

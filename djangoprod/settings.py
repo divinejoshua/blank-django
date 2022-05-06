@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #Installed Programs
     'django_celery_results',
+    'django_celery_beat',
 
     # Program apps
      'crudapp',
@@ -99,7 +100,7 @@ DATABASES['default'].update(db_from_env)
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'BACKEND': 'redis_cache.RedisCache',
         'LOCATION':  config('REDIS_URL'),
     }
 }
