@@ -18,29 +18,24 @@
   <body>
 
     <div class="container mt-5">
-        <h3>View names!</h3>
+        <h3>View numbers!</h3>
 
             <div class="alert alert-warning" role="alert">
                 <div class="container">
-                <p class="lead">Refresh the page for frequent updates. Numbers are added periodically . it is handeled by celery beats.</p>
+                <p class="lead">Refresh the page for frequent updates. Verification takes up to 20 seconds. it is handeled by celery.</p>
                 </div>
             </div>
 
 
 
-            <!-- For loop for all names -->
+            <!-- For loop for all numbers -->
             <ul class="list-group">
 
               {% for name in numberlist %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <p>{{ name.name }}</p>
+                  <p>{{ name.number }}</p>
 
-                  <!-- Check verified status -->
-                  {% if name.verified %}
-                    <span class="badge badge-danger bg-success">Verified</span>
-                  {% else %}
-                    <span class="badge badge-secondary bg-secondary">Pending</span>
-                  {% endif %}
+                    <span class="badge badge-danger bg-secondary">{{ name.time }}</span>
                 </li>
               {% endfor %}
 
