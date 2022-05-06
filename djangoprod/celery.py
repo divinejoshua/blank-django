@@ -24,7 +24,10 @@ app.conf.beat_schedule = {
         'task': 'crudapp.tasks.add_number',
 
         # The schelduled time 
-        'schedule': crontab(minute=0, hour=0), #Execute daily at midnight.
+       
+        'schedule':  crontab(minute=0, hour='0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23'), #Execute ever hour.
+        # 'schedule':  crontab(), #Execute daily at midnight.
+        # 'schedule': crontab(minute=0, hour=0), #Execute daily at midnight.
 
 
         # 'args': (arguments if any),

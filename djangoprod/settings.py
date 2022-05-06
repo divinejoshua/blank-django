@@ -109,7 +109,7 @@ CACHES = {
 
 
 # The command for CELERY is 'celery -A djangoprod worker -l info --pool=solo'
-# The command for CELERY BEAT is 'celery -A djangoprod beat -l info --pool=solo'
+# The command for CELERY BEAT is 'celery -A djangoprod beat -l info'
 
 # Celery
 CELERY_BROKER_URL =  config('REDIS_URL')
