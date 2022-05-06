@@ -12,7 +12,7 @@ from time import sleep
 # The user is verified by this task 
 @shared_task
 def update_verify(id):
-    # sleep(20)
+    sleep(20)
 
     instance = NameList.objects.filter(pk=id).first()
     instance.verified = True
