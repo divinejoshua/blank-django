@@ -52,7 +52,7 @@ class ListItems(View):
     def get(self, request, *args, **kwargs):
         context = {}
 
-        name_list = NameList.objects.all()
+        name_list = NameList.objects.all().order_by('-id')
         context['name_list'] = name_list
         return render(request, self.template_name, context)
 
