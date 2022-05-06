@@ -3,7 +3,13 @@ from django.shortcuts import render,redirect
 from django.views import View
 from .models import NameList, BlogPost
 from .forms import CreateNameListForm
+
+# The background task 
 from .tasks import update_verify
+
+# For caching
+from django.core.cache import cache
+
 # Create your views here.
 
 
@@ -59,6 +65,16 @@ class BlogView(View):
         
         context = {}
 
-        blog_post = BlogPost.objects.last()
-        context['blog_post'] = blog_post
+        # Setting the cache 
+        # cache.set(key, value, timeout=DEFAULT_TIMEOUT in seconds)
+
+
+        # check if cache exist
+        if cache.get('cached_blog_post'):
+                context['blog_post'] = cache.get('cached_blog_post')
+        else:
+            blog_post = BlogPost.objects.last()
+            cache.set('cached_blog_post', blog_post, 20)
+            context['blog_post'] = blog_post
+            
         return render(request, self.template_name, context)
