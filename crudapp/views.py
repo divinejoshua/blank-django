@@ -65,15 +65,16 @@ class BlogView(View):
         
         context = {}
 
-        # Setting the cache 
-        # cache.set(key, value, timeout=DEFAULT_TIMEOUT in seconds)
-
 
         # check if cache exist
         if cache.get('cached_blog_post'):
                 context['blog_post'] = cache.get('cached_blog_post')
         else:
+            # Get the value from the database 
             blog_post = BlogPost.objects.last()
+            
+             # Setting the cache 
+            # cache.set(key, value, timeout=DEFAULT_TIMEOUT in seconds)
             cache.set('cached_blog_post', blog_post, 20)
             context['blog_post'] = blog_post
             
