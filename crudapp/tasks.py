@@ -1,5 +1,8 @@
 from celery import shared_task
-from .models import NameList, BlogPost
+from .models import NameList, NumberGuess
+
+import random
+import string
 
 
 from time import sleep
@@ -13,4 +16,21 @@ def update_verify(id):
     instance = NameList.objects.filter(pk=id).first()
     instance.verified = True
     instance.save()
-    return 'Done'
+    return 'Done Celery'
+
+
+
+# The user is verified by this task 
+@shared_task
+def add_number():
+
+    # printing values
+    letters = string.ascii_lowercase
+    random_value = ''.join(random.choice(letters) for i in range(10))
+
+    # Instantiate the Models 
+    instance = NumberGuess()
+    instance.number = random_value
+    instance.save()
+
+    return 'Done Celery beat'
