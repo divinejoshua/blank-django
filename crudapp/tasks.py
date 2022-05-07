@@ -17,8 +17,6 @@ from time import sleep
 # Threading for update verify
 def update_verify_thread(id):
     sleep(20)
-    print("was here")
-
     instance = NameList.objects.filter(pk=id).first()
     instance.verified = True
     instance.save()
