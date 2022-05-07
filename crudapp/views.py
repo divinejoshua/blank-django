@@ -43,7 +43,7 @@ class AddHomeView(View):
 
         return render(request, self.template_name, context)
 
-
+    
 
 # This view displays ever list and every status 
 class ListItems(View):
