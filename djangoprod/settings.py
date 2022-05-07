@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
-"""
+""" 
 
 from pathlib import Path
 from decouple import config
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #Installed Programs
     'django_celery_results',
     'django_celery_beat',
+    'celery_progress',
 
     # Program apps
      'crudapp',
@@ -110,7 +111,6 @@ CACHES = {
 
 # The command for CELERY is 'celery -A djangoprod worker -l info --pool=solo'
 # The command for CELERY BEAT is 'celery -A djangoprod beat -l info'
-
 # Celery
 CELERY_BROKER_URL =  config('REDIS_URL')
 
